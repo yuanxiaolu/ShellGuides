@@ -16,3 +16,17 @@ ssh root@${ip} 'helm list --col-width 200 | sed 1d | awk '{print $9}' | sort | u
 line='$9'
 ssh root@${ip} "helm list --col-width 200 | sed 1d | awk '{print $line}' | sort | uniq"
 ```
+
+#### shell脚本中要远程登录目标机器并执行命令
+```s
+if [ -z "$1" ];
+then
+ip="";
+else
+ip=$1;
+fi
+
+filename="AcWorkerLogs"For${ip}At`date +%Y%m%d%H%M%S`
+ssh root@${ip} 'kubectl logs -f -n nebula podname --tail 0' > ./${filename}.txt
+
+```
