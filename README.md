@@ -26,7 +26,11 @@ else
 ip=$1;
 fi
 
-filename="AcWorkerLogs"For${ip}At`date +%Y%m%d%H%M%S`
 ssh root@${ip} 'kubectl logs -f -n nebula podname --tail 0' > ./${filename}.txt
 
+```
+#### Multiple threads in shell script比如发送请求同时记录日志
+```s
+ssh root@${ip} 'kubectl logs -f -n nebula podname --tail 0' > ./${filename}.txt &
+newman run xxx.json -g globals.json --insecure -n 100
 ```
