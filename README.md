@@ -31,6 +31,10 @@ ssh root@${ip} 'kubectl logs -f -n nebula podname --tail 0' > ./${filename}.txt
 ```
 #### Multiple threads in shell script比如发送请求同时记录日志
 ```s
-ssh root@${ip} 'kubectl logs -f -n nebula podname --tail 0' > ./${filename}.txt &
-newman run xxx.json -g globals.json --insecure -n 100
+read_cfg cfgA &
+read_cfg cfgB &
+read_cfg cfgC &
+wait
+
+all those jobs will then run in the background simultaneously. The optional wait command will then wait for all the jobs to finish.
 ```
