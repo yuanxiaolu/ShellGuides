@@ -38,3 +38,8 @@ wait
 
 all those jobs will then run in the background simultaneously. The optional wait command will then wait for all the jobs to finish.
 ```
+#### while循环总是为true的写法
+```s
+Colon is always "true":
+while :; do foo; sleep 2; done
+```
