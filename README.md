@@ -43,3 +43,13 @@ all those jobs will then run in the background simultaneously. The optional wait
 Colon is always "true":
 while :; do foo; sleep 2; done
 ```
+
+```s
+preparation step:
+echo $SHELL
+>>> /bin/bash
+$SHELL --version
+>>> GNU bash, version 4.3.48(1)-release (x86_64-pc-linux-gnu)
+version_local=`echo $chart_local | sed "s/aurora-//g"`;  //correct, match rest of content except quried
+version_local=`echo $(chart_local) | sed "s/aurora-//g"`;  //chart_local: not found
+```
